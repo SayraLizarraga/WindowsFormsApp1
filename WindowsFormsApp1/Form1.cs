@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
@@ -19,13 +20,14 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
 
         }
         private void textBox1_TextChanged (object sender, EventArgs e)
         {
 
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -40,8 +42,11 @@ namespace WindowsFormsApp1
                 var fileStream = openFileDialog1.OpenFile();
                 using (StreamReader reader = new StreamReader(fileStream))
                 {
+                   
                     fileContent = reader.ReadToEnd();
-                         
+                    fileContent = Regex.Replace(fileContent, "<.*?>", string.Empty);
+
+
                 }
             }
             time.Stop();
@@ -54,5 +59,6 @@ namespace WindowsFormsApp1
             
         }
 
+ 
     }
 }
